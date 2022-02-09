@@ -1,6 +1,6 @@
 pipeline {
     agent any 
-    options { timeout(time: 5) }
+    options { timeout(time: 30) }
     stages {
         stage("Stage One") {
             steps {
@@ -22,7 +22,7 @@ pipeline {
         }
         stage("Compile") {
             steps {
-                sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn compile"
+                sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn clean compile"
             }
         }
     }
@@ -34,3 +34,4 @@ pipeline {
         }
     }
 } 
+
