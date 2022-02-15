@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent any  
     options { timeout(time: 30) }
     stages {
         stage("Stage One") {
@@ -25,6 +25,28 @@ pipeline {
                 sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn clean compile"
             }
         }
+		stage("Package") {
+            steps {
+                sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
+            }
+		}
+		stage("Docker build") {
+			steps {
+				sh "docker build -t npunekar/calculatorone ."
+			}
+		}
+		stage("Docker push") {
+			steps {
+				sh "cat ./password | docker login --username npunekar --password-stdin"  
+				sh "docker push npunekar/calculatorone"
+				sh "docker logout" 
+			}
+		}
+		stage("Deploy to staging") {
+			steps { 
+				sh "docker run -d -p 8762:8080 --name calculatorone-app npunekar/calculatorone"
+			}
+		}
     }
     post {
         always {
