@@ -23,6 +23,11 @@ pipeline {
                 sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn clean compile"
             }
         }
+		stage("Unit test") {
+			steps { 
+				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn test" 
+			}
+		} 
 		stage("Package") {
 			steps {
 				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
