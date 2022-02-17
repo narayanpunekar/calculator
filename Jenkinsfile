@@ -24,25 +24,25 @@ pipeline {
             }
         }
 		stage("Package") {
-            steps {
-                sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
-            }
+			steps {
+				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
+			}
 		}
 		stage("Docker build") {
 			steps {
-				sh "docker build -t npunekar/calculatorone ."
+				sh "docker build -t npunekar/calculator ."
 			}
 		}
 		stage("Docker push") {
 			steps {
 				sh "cat ./password | docker login --username npunekar --password-stdin"  
-				sh "docker push npunekar/calculatorone"
+				sh "docker push npunekar/calculator"
 				sh "docker logout" 
 			}
 		}
 		stage("Deploy to staging") {
 			steps { 
-				sh "docker run -d -p 8762:8080 --name calculatorone-app npunekar/calculatorone"
+				sh "docker run -d -p 8761:8080 --name calculator-app npunekar/calculator"
 			}
 		}
     }
