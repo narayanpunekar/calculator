@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
- * @author hp
+ * @author 
  */
 @RestController
 public class CalculatorController {
