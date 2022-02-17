@@ -23,15 +23,10 @@ pipeline {
                 sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn clean compile"
             }
         }
-		stage("Unit test") {
-			steps { 
-				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn test" 
-			}
-		} 
 		stage("Package") {
-            steps {
-                sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
-            }
+			steps {
+				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
+			}
 		}
 		stage("Docker build") {
 			steps {
@@ -47,7 +42,7 @@ pipeline {
 		}
 		stage("Deploy to staging") {
 			steps { 
-				sh "docker run -d -p 8762:8080 --name calculator-app npunekar/calculator"
+				sh "docker run -d -p 8761:8080 --name calculator-app npunekar/calculator"
 			}
 		}
     }
