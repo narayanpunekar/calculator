@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-java 
 LABEL maintainer="Narayan Punekar"
-LABEL description="This Dockerfile installs calculator Spring Boot"
+LABEL description="This Dockerfile installs calculator Spring Boot Memory heap"
 COPY ./target/calculator-0.0.1-SNAPSHOT.jar calculator-app.jar  
 #ENTRYPOINT ["java", "-jar", "calculator-app.jar"] 
 ENTRYPOINT exec java $JAVA_OPTS -jar calculator-app.jar 
