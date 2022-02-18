@@ -30,7 +30,7 @@ pipeline {
 		}
 		stage("Docker build") {
 			steps {
-				sh "docker build -t npunekar/calculator ."
+				sh "docker build -f ExecDockerfile -t npunekar/calculator ."
 			}
 		}
 		stage("Docker push") {
@@ -42,7 +42,7 @@ pipeline {
 		}
 		stage("Deploy to staging") {
 			steps { 
-				sh "docker run -d -p 8761:8080 --name calculator-app npunekar/calculator"
+				sh "docker run -d -p 8761:8080 -e JAVA_OPTS='-Xms3G -Xmx4G' --name calculator-app npunekar/calculator"
 			}
 		}
     }
