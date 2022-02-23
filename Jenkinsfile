@@ -47,12 +47,14 @@ pipeline {
 		}
 		stage("Deploy to staging") {
 			steps { 
-				sh "docker run -d -p 8761:8080 -e JAVA_OPTS='-Xms3G -Xmx4G' --name calculator-app npunekar/calculator"
+				//sh "docker run -d -p 8761:8080 -e JAVA_OPTS='-Xms3G -Xmx4G' --name calculator-app npunekar/calculator"
+				sh "docker-compose up -d" 
 			}
 		}
     }
     post {
         always {
+			sh "docker-compose down" 
             mail to: 'narayan.v.punekar@gmail.com',
             subject: "Completed Pipeline: ${currentBuild.fullDisplayName}", 
             body: "Build completed, ${env.BUILD_URL}"

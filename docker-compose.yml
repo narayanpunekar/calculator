@@ -1,0 +1,10 @@
+version: '3'
+services: 
+  calculator-app:
+    image: npunekar/calculator:latest 
+    container_name: calculator-app 
+    ports:
+      - 8080 
+  redis:
+    image: redis:latest 
+    container_name: redis 
