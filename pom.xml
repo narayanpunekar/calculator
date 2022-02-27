@@ -40,8 +40,20 @@
                 <scope>test</scope>
             </dependency>
             <!-- end: branch_220217_2 -->
-        </dependencies>
-
+            <!-- begin: branch_220222_1 -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>2.6.2</version>
+            </dependency>
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>3.7.1</version>
+            </dependency>
+            <!-- end: branch_220222_1 -->
+	</dependencies>
 	<build>
             <plugins>
                 <plugin>
@@ -66,5 +78,4 @@
                 <!-- end: branch_220217_2 -->
             </plugins>
         </build>
-
 </project>
