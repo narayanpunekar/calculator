@@ -9,6 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
  */
 @Service
 public class Calculator {
+    //branch_220222_1: Spring Cache
     @Cacheable("sum")
     public int sum(int a, int b) {
         return a+b;

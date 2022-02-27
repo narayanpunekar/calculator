@@ -18,7 +18,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 @Configuration
 @EnableCaching
 public class clsCalculatorCache extends CachingConfigurerSupport {
-    private static final String strHostName = "redisone";
+    private static final String strHostName = "redis";
 
     @Bean
     public RedisCacheManager cacheManager() {
