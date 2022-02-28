@@ -47,8 +47,8 @@ pipeline {
 		}
 		stage("Deploy to staging") {
 			steps { 
-				//sh "docker container rm -f calculator-app" 
-				//sh "docker rmi \$(docker images -f \"dangling=true\" -q)" 
+				sh "docker container rm -f calculator-app" 
+				sh "docker rmi \$(docker images -f \"dangling=true\" -q)" 
 				sh "docker run -d -p 8761:8080 -e JAVA_OPTS='-Xms512M -Xmx1024M' --name calculator-app npunekar/calculator"
 				//sh "docker-compose up -d" 
 			}
