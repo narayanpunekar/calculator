@@ -23,11 +23,11 @@ pipeline {
                 sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn clean compile"
             }
         }
-		//stage("Unit test") {
-		//	steps { 
-		//		sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn test" 
-		//	}
-		//} 
+		stage("Unit test") {
+			steps { 
+				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn test" 
+			}
+		} 
 		stage("Package") {
 			steps {
 				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
@@ -47,8 +47,8 @@ pipeline {
 		}
 		stage("Deploy to staging") {
 			steps { 
-				sh "docker container rm -f calculator-app" 
-				sh "docker rmi \$(docker images -f \"dangling=true\" -q)" 
+				//sh "docker container rm -f calculator-app" 
+				//sh "docker rmi \$(docker images -f \"dangling=true\" -q)" 
 				//sh "docker run -d -p 8761:8080 -e JAVA_OPTS='-Xms512M -Xmx1024M' --name calculator-app npunekar/calculator"
 				sh "docker-compose up -d" 
 			}
