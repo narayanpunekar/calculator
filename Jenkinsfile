@@ -20,17 +20,17 @@ pipeline {
         }
         stage("Compile") {
             steps {
-                sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn clean compile"
+                sh "mvn clean compile"
             }
         }
 		//stage("Unit test") {
 		//	steps { 
-		//		sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn test" 
+		//		sh "mvn test" 
 		//	}
 		//} 
 		stage("Package") {
 			steps {
-				sh "/var/jenkins_home/tools/hudson.tasks.Maven_MavenInstallation/maven363/bin/mvn package"
+				sh "mvn package"
 			}
 		}
 		stage("Docker build") {
