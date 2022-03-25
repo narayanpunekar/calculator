@@ -9,7 +9,7 @@ pipeline {
         }
         stage("Stage Two") {
             steps {
-                echo 'Step 1. Hello World'
+                echo 'Multibranch Pipeline calculator'
             }
         }
         stage("Checkout") {
