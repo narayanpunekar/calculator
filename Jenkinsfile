@@ -23,11 +23,11 @@ pipeline {
                 sh "mvn clean compile"
             }
         }
-		//stage("Unit test") {
-		//	steps { 
-		//		sh "mvn test" 
-		//	}
-		//} 
+		stage("Unit test") {
+			steps { 
+				sh "mvn test" 
+			}
+		} 
 		stage("Package") {
 			steps {
 				sh "mvn package"
